@@ -1,0 +1,76 @@
+/* ── Scroll-reveal ────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left  { opacity:0; transform:translateX(-32px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+.reveal-right { opacity:0; transform:translateX(32px);  transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+.reveal-left.visible, .reveal-right.visible { opacity:1; transform:translateX(0); }
+
+/* Stagger delays */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+.delay-600 { transition-delay: 600ms; }
+.delay-700 { transition-delay: 700ms; }
+
+/* ── Decorative ring pulse ─────────────────────────────────── */
+@keyframes ring-pulse {
+  0%   { transform: scale(1);   opacity: 0.7; }
+  100% { transform: scale(1.9); opacity: 0;   }
+}
+.ring-pulse {
+  position: relative;
+}
+.ring-pulse::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  background: currentColor;
+  animation: ring-pulse 2s ease-out infinite;
+}
+
+/* ── Floating orbs ─────────────────────────────────────────── */
+@keyframes orb-drift {
+  0%, 100% { transform: translate(0, 0) scale(1);     }
+  33%       { transform: translate(30px, -20px) scale(1.05); }
+  66%       { transform: translate(-20px, 15px) scale(0.97);  }
+}
+.orb-drift { animation: orb-drift 12s ease-in-out infinite; }
+.orb-drift-slow { animation: orb-drift 18s ease-in-out infinite reverse; }
+
+/* ── Counter count-up (handled via JS/framer) ─────────────── */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+.count-up { animation: count-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+/* ── Video overlay ─────────────────────────────────────────── */
+.hero-overlay {
+  background: linear-gradient(
+    160deg,
+    rgba(21, 50, 68, 0.75) 0%,
+    rgba(21, 50, 68, 0.45) 50%,
+    rgba(204, 90, 107, 0.25) 100%
+  );
+}
+
+/* ── Marquee (trust logos / service tags) ─────────────────── */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
