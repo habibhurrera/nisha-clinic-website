@@ -1,5 +1,7 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 import Layout from "@/components/layout/Layout";
 import HeroSection from "@/components/sections/HeroSection";
 import StatsBar    from "@/components/sections/StatsBar";
@@ -48,6 +50,27 @@ const KEYWORDS = [
 ].join(", ");
 
 export default function HomePage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    // If hash is #leave-review, wait for dynamic sections to mount then scroll
+    if (router.asPath.includes("#leave-review")) {
+      const scroll = () => {
+        const el = document.getElementById("leave-review");
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      };
+      // Try immediately, then retry a few times to handle lazy-load delay
+      const timers = [
+        setTimeout(scroll, 300),
+        setTimeout(scroll, 800),
+        setTimeout(scroll, 1500),
+      ];
+      return () => timers.forEach(clearTimeout);
+    }
+  }, [router.asPath]);
+
   return (
     <>
       <Head>
