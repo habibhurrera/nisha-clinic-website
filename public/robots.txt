@@ -3,5 +3,6 @@ Allow: /
 
 # Block API routes from indexing
 Disallow: /api/
+Disallow: /admin
 
 Sitemap: https://drnishatabassum.com/sitemap.xml

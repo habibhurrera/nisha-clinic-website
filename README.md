@@ -100,6 +100,21 @@ import LazyImage from "@/components/ui/LazyImage";
 
 WhatsApp number is set in `lib/constants.ts` → `CONTACT.whatsappIntl`
 
+## ⭐ Patient Reviews (Supabase + /admin)
+Reviews submitted on the home page are saved to a Supabase database as **pending**.
+They only appear on the website after approval at **/admin**.
+
+**One-time setup**
+1. Create a free project at https://supabase.com
+2. Supabase → **SQL Editor** → paste `supabase/reviews.sql` → **Run**
+3. Supabase → **Project Settings → API** → copy the **Project URL** and the **service_role** key
+4. Add to `.env.local` (and Vercel → Settings → Environment Variables):
+   - `SUPABASE_URL`
+   - `SUPABASE_SERVICE_ROLE_KEY` (secret — never prefix with `NEXT_PUBLIC_`)
+   - `ADMIN_PASSWORD` (password for /admin)
+
+**Approving reviews:** open `/admin`, log in, click **Approve** (or **Hide** / **Delete**).
+
 ## 🔍 SEO Checklist
 - [x] Unique title + description on every page
 - [x] Canonical URLs
