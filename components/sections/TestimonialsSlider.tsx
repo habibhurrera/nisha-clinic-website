@@ -116,17 +116,22 @@ export default function TestimonialsSlider() {
           {/* Dot nav */}
           <div className="flex items-center justify-center gap-3">
             {TESTIMONIALS.map((_, i) => (
+              // Padding gives a ~32px tap area around the small visible dot
               <button
                 key={i}
                 onClick={() => setActive(i)}
-                className="transition-all duration-300 rounded-full"
-                style={{
-                  width: i === active ? "2rem" : "0.5rem",
-                  height: "0.5rem",
-                  background: i === active ? "#e07f8d" : "rgba(255,255,255,0.2)",
-                }}
+                className="p-3 -m-1 flex items-center justify-center"
                 aria-label={`Testimonial ${i + 1}`}
-              />
+              >
+                <span
+                  className="block transition-all duration-300 rounded-full"
+                  style={{
+                    width: i === active ? "2rem" : "0.5rem",
+                    height: "0.5rem",
+                    background: i === active ? "#e07f8d" : "rgba(255,255,255,0.2)",
+                  }}
+                />
+              </button>
             ))}
           </div>
 

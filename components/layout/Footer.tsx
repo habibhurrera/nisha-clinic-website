@@ -26,7 +26,7 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <Link href="/" className="inline-block mb-4">
               <p className="font-serif text-xl text-white font-medium leading-tight">Dr. Nisha Tabassum</p>
-              <p className="font-sans text-[10px] text-white/60 tracking-widest uppercase mt-0.5">Consultant Gynaecologist</p>
+              <p className="font-sans text-[11px] text-white/60 tracking-widest uppercase mt-0.5">Consultant Gynaecologist</p>
             </Link>
             <p className="font-sans text-sm text-white/70 leading-relaxed mb-5">
               Compassionate specialist care for women at every stage of life. Serving Karachi for 13+ years.
@@ -37,10 +37,10 @@ export default function Footer() {
           {/* Col 2: Quick Links */}
           <div>
             <h3 className="font-sans font-semibold text-xs tracking-widest uppercase text-white/60 mb-5">Quick Links</h3>
-            <ul className="space-y-2.5">
+            <ul className="space-y-0.5">
               {FOOTER_LINKS.map(l => (
                 <li key={l.href}>
-                  <Link href={l.href} className="font-sans text-sm text-white/70 hover:text-white transition-colors duration-150 flex items-center gap-2 group">
+                  <Link href={l.href} className="font-sans text-sm text-white/70 hover:text-white transition-colors duration-150 flex items-center gap-2 py-1.5 group">
                     <span className="w-1 h-1 rounded-full bg-blush-400 group-hover:bg-blush-300 transition-colors" />
                     {l.label}
                   </Link>
@@ -52,10 +52,10 @@ export default function Footer() {
           {/* Col 3: Services */}
           <div>
             <h3 className="font-sans font-semibold text-xs tracking-widest uppercase text-white/60 mb-5">Services</h3>
-            <ul className="space-y-2.5">
+            <ul className="space-y-0.5">
               {SERVICES_QUICK.map(s => (
                 <li key={s}>
-                  <Link href="/services" className="font-sans text-sm text-white/70 hover:text-white transition-colors duration-150 flex items-center gap-2 group">
+                  <Link href="/services" className="font-sans text-sm text-white/70 hover:text-white transition-colors duration-150 flex items-center gap-2 py-1.5 group">
                     <span className="w-1 h-1 rounded-full bg-blush-400 group-hover:bg-blush-300 transition-colors" />
                     {s}
                   </Link>
@@ -67,27 +67,27 @@ export default function Footer() {
           {/* Col 4: Contact */}
           <div>
             <h3 className="font-sans font-semibold text-xs tracking-widest uppercase text-white/60 mb-5">Contact</h3>
-            <ul className="space-y-3 text-sm">
+            <ul className="space-y-1 text-sm">
               <li>
-                <a href={`tel:${CONTACT.phoneIntl}`} className="flex items-center gap-2.5 text-white/70 hover:text-white transition-colors">
+                <a href={`tel:${CONTACT.phoneIntl}`} className="flex items-center gap-2.5 py-1.5 text-white/70 hover:text-white transition-colors">
                   <span>📞</span><span>{CONTACT.phone}</span>
                 </a>
               </li>
               <li>
                 <a href={`https://wa.me/${CONTACT.whatsappIntl}?text=${encodeURIComponent(CONTACT.whatsappMsg)}`}
                   target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 text-white/70 hover:text-white transition-colors">
+                  className="flex items-center gap-2.5 py-1.5 text-white/70 hover:text-white transition-colors">
                   <span>💬</span><span>{CONTACT.whatsapp} (WhatsApp)</span>
                 </a>
               </li>
               <li>
-                <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-2.5 text-white/70 hover:text-white transition-colors">
+                <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-2.5 py-1.5 text-white/70 hover:text-white transition-colors">
                   <span>✉️</span><span className="break-all">{CONTACT.email}</span>
                 </a>
               </li>
               <li>
                 <a href={CONTACT.facebook} target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 text-white/70 hover:text-white transition-colors">
+                  className="flex items-center gap-2.5 py-1.5 text-white/70 hover:text-white transition-colors">
                   <span>📘</span><span>Facebook</span>
                 </a>
               </li>
