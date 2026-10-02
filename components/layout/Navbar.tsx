@@ -59,7 +59,7 @@ export default function Navbar() {
               <span className="font-serif text-lg md:text-xl font-semibold text-white">
                 Dr. Nisha Tabassum
               </span>
-              <span className="font-sans text-[9px] md:text-[10px] tracking-widest uppercase text-blush-200">
+              <span className="font-sans text-[11px] tracking-wider md:tracking-widest uppercase text-blush-200">
                 Gynaecologist &amp; Laparoscopic Surgeon
               </span>
             </div>

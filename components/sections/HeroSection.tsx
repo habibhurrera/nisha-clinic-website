@@ -170,7 +170,7 @@ export default function HeroSection() {
             className="absolute top-10 -right-4 glass rounded-2xl px-4 py-3 shadow-card-hover"
           >
             <p className="font-sans text-xs text-navy-600 font-medium">⭐ 4.9 / 5 Rating</p>
-            <p className="font-sans text-[10px] text-neutral-400 mt-0.5">Based on 500+ reviews</p>
+            <p className="font-sans text-xs text-neutral-400 mt-0.5">Based on 500+ reviews</p>
           </motion.div>
 
           {/* Floating badge — experience */}
@@ -180,7 +180,7 @@ export default function HeroSection() {
             className="absolute bottom-20 -left-6 glass rounded-2xl px-4 py-3 shadow-card-hover"
           >
             <p className="font-sans text-xs text-navy-600 font-medium">🏅 13+ Years</p>
-            <p className="font-sans text-[10px] text-neutral-400 mt-0.5">Clinical Experience</p>
+            <p className="font-sans text-xs text-neutral-400 mt-0.5">Clinical Experience</p>
           </motion.div>
         </motion.div>
       </div>
@@ -192,7 +192,7 @@ export default function HeroSection() {
         transition={{ delay: 1.8 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="font-sans text-[10px] tracking-widest uppercase" style={{ color: "rgba(186,210,224,0.5)" }}>Scroll</span>
+        <span className="font-sans text-[11px] tracking-widest uppercase" style={{ color: "rgba(186,210,224,0.5)" }}>Scroll</span>
         <div className="w-px h-10 overflow-hidden" style={{ background: "rgba(186,210,224,0.15)" }}>
           <motion.div
             className="w-full h-1/2 bg-blush-300"

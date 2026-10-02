@@ -95,7 +95,7 @@ function LocationCard({ loc, i }: { loc: typeof LOCATIONS[0]; i: number }) {
             {loc.name}
           </h3>
           <span
-            className="chip text-[10px] flex-shrink-0 mt-0.5"
+            className="chip text-[11px] flex-shrink-0 mt-0.5"
             style={{ background: loc.tagBg, color: loc.accentColor }}
           >
             {loc.tag}
