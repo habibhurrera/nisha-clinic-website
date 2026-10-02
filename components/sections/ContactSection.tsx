@@ -25,8 +25,8 @@ const CONTACT_CARDS = [
       </svg>
     ),
     label: "WhatsApp",
-    value: "0314-2840922",
-    href: `https://wa.me/923142840922?text=${encodeURIComponent(CONTACT.whatsappMsg)}`,
+    value: CONTACT.whatsapp,
+    href: `https://wa.me/${CONTACT.whatsappIntl}?text=${encodeURIComponent(CONTACT.whatsappMsg)}`,
     accent: "#25D366",
     bg: "#f0fdf4",
     cta: "Chat on WhatsApp",

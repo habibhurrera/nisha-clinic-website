@@ -5,8 +5,8 @@ export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.drnisha
 export const CONTACT = {
   phone:          "0327-3885120",
   phoneIntl:      "+923273885120",
-  whatsapp:       "0327-3885120",
-  whatsappIntl:   "+923273885120",
+  whatsapp:       "0314-2840922",
+  whatsappIntl:   "923142840922", // digits only — wa.me links don't take "+"
   whatsappMsg:    "Hi, I would like to book an appointment with Dr. Nisha Tabassum.",
   email:          "info@drnishatabassum.com",
   facebook:       "https://facebook.com/drnishatabassum",

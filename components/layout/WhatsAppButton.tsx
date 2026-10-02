@@ -14,7 +14,7 @@ export default function WhatsAppButton() {
     return () => { clearTimeout(t1); clearTimeout(t2); };
   }, []);
 
-  const href = `https://wa.me/923142840922?text=${encodeURIComponent(CONTACT.whatsappMsg)}`;
+  const href = `https://wa.me/${CONTACT.whatsappIntl}?text=${encodeURIComponent(CONTACT.whatsappMsg)}`;
 
   return (
     <AnimatePresence>
@@ -39,7 +39,7 @@ export default function WhatsAppButton() {
               >
                 <div className="bg-white rounded-2xl px-4 py-2.5 shadow-card-hover border border-warm-200 whitespace-nowrap">
                   <p className="font-sans text-xs font-semibold text-navy-800">Chat with us!</p>
-                  <p className="font-sans text-[10px] text-neutral-400">0314-2840922</p>
+                  <p className="font-sans text-[10px] text-neutral-400">{CONTACT.whatsapp}</p>
                   {/* Arrow */}
                   <div className="absolute right-[-7px] top-1/2 -translate-y-1/2 w-0 h-0"
                     style={{ borderLeft: "7px solid white", borderTop: "6px solid transparent", borderBottom: "6px solid transparent" }}
