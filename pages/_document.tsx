@@ -178,7 +178,7 @@ export default function Document() {
                 {
                   "@type": "Question",
                   "name": "How to book an appointment with Dr. Nisha Tabassum?",
-                  "acceptedAnswer": { "@type": "Answer", "text": "You can book an appointment via WhatsApp at +923273885120, call directly, or fill the appointment form at drnishatabassum.com." }
+                  "acceptedAnswer": { "@type": "Answer", "text": "You can book an appointment via WhatsApp at +923142840922, call +923273885120 directly, or fill the appointment form at drnishatabassum.com." }
                 },
                 {
                   "@type": "Question",

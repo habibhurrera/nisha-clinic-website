@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { CONTACT } from "@/lib/constants";
 
 export default function AppointmentCTA() {
   return (
@@ -43,7 +44,7 @@ export default function AppointmentCTA() {
                 </svg>
                 Book Appointment
               </Link>
-              <a href="https://wa.me/923130695638?text=Hi%2C%20I%20would%20like%20to%20book%20an%20appointment%20with%20Dr.%20Nisha%20Tabassum"
+              <a href={`https://wa.me/${CONTACT.whatsappIntl}?text=${encodeURIComponent(CONTACT.whatsappMsg)}`}
                 target="_blank" rel="noopener noreferrer"
                 className="btn-outline-white"
               >
