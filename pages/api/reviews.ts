@@ -44,7 +44,8 @@ async function listApproved(res: NextApiResponse) {
       .limit(30);
     if (error) throw error;
 
-    res.setHeader("Cache-Control", "public, s-maxage=60, stale-while-revalidate=300");
+    // No CDN caching: approvals/deletes in /admin must show up immediately.
+    res.setHeader("Cache-Control", "no-store");
     return res.status(200).json({ reviews: data });
   } catch (err) {
     console.error("[GET /api/reviews]", err);
