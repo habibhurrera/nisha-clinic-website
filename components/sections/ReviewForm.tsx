@@ -68,10 +68,11 @@ export default function ReviewForm() {
   const [errorMsg, setErrorMsg] = useState("");
   const [honeypot, setHoneypot] = useState("");
 
-  const set = (field: keyof ReviewFormData, value: string | number) => {
+  const set = (field: keyof ReviewFormData, value: string | number, markTouched = false) => {
     const next = { ...form, [field]: value };
     setForm(next);
-    if (touched[field]) setErrors(validate(next));
+    if (markTouched) setTouched((prev) => ({ ...prev, [field]: true }));
+    if (markTouched || touched[field]) setErrors(validate(next));
   };
 
   const blur = (field: keyof ReviewFormData) => {
@@ -211,7 +212,7 @@ export default function ReviewForm() {
         <label className="label-field">
           Rating <span className="text-blush-500">*</span>
         </label>
-        <StarPicker value={form.rating} onChange={(v) => { set("rating", v); blur("rating"); }} />
+        <StarPicker value={form.rating} onChange={(v) => set("rating", v, true)} />
         <AnimatePresence>
           {touched.rating && errors.rating && (
             <motion.p initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} className="font-sans text-xs text-blush-600">
