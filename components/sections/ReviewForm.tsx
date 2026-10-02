@@ -2,14 +2,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
-const GOOGLE_FORM_ACTION =
-  "https://docs.google.com/forms/d/e/1FAIpQLSfdCrnVuP8c1cgtLILfFk7XTHdDr64L1hs4bpZpEqTlWZiUiQ/formResponse";
-
-const ENTRY_NAME     = "entry.1677308567";
-const ENTRY_LOCATION = "entry.1276960200";
-const ENTRY_RATING   = "entry.55159011";
-const ENTRY_MESSAGE  = "entry.1661067780";
-
 /* ── Star Picker ─────────────────────────────────────────────────────────── */
 function StarPicker({ value, onChange }: { value: number; onChange: (v: number) => void }) {
   const [hover, setHover] = useState(0);
@@ -73,6 +65,8 @@ export default function ReviewForm() {
   const [errors, setErrors]   = useState<FormErrors>({});
   const [touched, setTouched] = useState<Partial<Record<keyof ReviewFormData, boolean>>>({});
   const [status, setStatus]   = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+  const [honeypot, setHoneypot] = useState("");
 
   const set = (field: keyof ReviewFormData, value: string | number) => {
     const next = { ...form, [field]: value };
@@ -104,19 +98,24 @@ export default function ReviewForm() {
     setStatus("submitting");
 
     try {
-      await fetch(GOOGLE_FORM_ACTION, {
+      const res = await fetch("/api/reviews", {
         method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-          [ENTRY_NAME]:     form.name.trim(),
-          [ENTRY_LOCATION]: form.location.trim(),
-          [ENTRY_RATING]:   String(form.rating),
-          [ENTRY_MESSAGE]:  form.message.trim(),
-        }).toString(),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name:     form.name.trim(),
+          location: form.location.trim(),
+          rating:   form.rating,
+          message:  form.message.trim(),
+          website:  honeypot,
+        }),
       });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body.message || "Something went wrong. Please try again or contact us directly.");
+      }
       setStatus("success");
-    } catch {
+    } catch (err) {
+      setErrorMsg(err instanceof Error ? err.message : "");
       setStatus("error");
     }
   }
@@ -148,6 +147,18 @@ export default function ReviewForm() {
   /* ── Form ────────────────────────────────────────────────────────────── */
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-5">
+
+      {/* Honeypot — hidden from people, bots fill it in */}
+      <input
+        type="text"
+        name="website"
+        value={honeypot}
+        onChange={(e) => setHoneypot(e.target.value)}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="hidden"
+      />
 
       {/* Name */}
       <div className="flex flex-col gap-1.5">
@@ -235,7 +246,7 @@ export default function ReviewForm() {
       {/* Error banner */}
       {status === "error" && (
         <p className="font-sans text-sm text-blush-600 bg-blush-50 border border-blush-200 rounded-xl px-4 py-3">
-          Something went wrong. Please try again or contact us directly.
+          {errorMsg || "Something went wrong. Please try again or contact us directly."}
         </p>
       )}
 
